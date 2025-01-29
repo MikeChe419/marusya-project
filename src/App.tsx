@@ -1,5 +1,6 @@
 
 import { FC } from "react";
+import React from "react"
 import Layout from "./components/Layout/Layout";
 import Header from "./components/Layout/Header";
 

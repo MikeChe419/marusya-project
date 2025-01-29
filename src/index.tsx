@@ -1,18 +1,26 @@
 import React from "react";
-import { createRoot } from 'react-dom/client'
+import ReactDOM from "react-dom/client";
+import './index.scss'
 import App from "./App";
-const rootElementId = 'root';
-const rootElement = document.getElementById(rootElementId) as HTMLElement | null;
 
-if (!rootElement) {
-    throw new Error(`Element by id - "${rootElementId}" was not found`);
-  }
-
-  const root = createRoot(rootElement);
+const renderApp = () => {
+    const rootElementId = 'root';
+    const rootElement = document.getElementById(rootElementId) as HTMLElement;
   
-  root.render(
+    if (!rootElement) {
+      throw new Error(`Element by id - "${rootElementId}" was not found`);
+    }
+  
+    const root = ReactDOM.createRoot(rootElement);
+  
+    root.render(
       <React.StrictMode>
-          <App></App>
-      </React.StrictMode>
-  );
-    
+
+          <App />
+
+      </React.StrictMode>,
+    );
+  };
+  
+  renderApp();
+  
