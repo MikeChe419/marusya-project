@@ -42,10 +42,11 @@ module.exports = {
                 "css-loader",
                 {
                   loader: "sass-loader",
-                //   options: {
-                //     // Prefer `dart-sass`, even if `sass-embedded` is available
-                //     implementation: require("sass"),
-                //   },
+                 
+                  options: {
+                             api: "modern"
+                //        implementation: require.resolve("scss"),
+                  },
                 },
               ],
             },

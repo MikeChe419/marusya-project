@@ -1,6 +1,6 @@
 import React from "react"
 import { FC } from "react"
-import styles from './Header.module.scss'
+import  styles from './Header.module.scss'
 
 
 const Header:FC = () => {
