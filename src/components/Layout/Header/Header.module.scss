@@ -1,5 +1,39 @@
+.container {
+    height: 400px;
+    width: 300px;
+    background-color: #e0e0e0;
+    overflow: hidden;
+}
+
+
 .header {
     color: green;
     padding: 15px;
-    background-color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+
+    &Container {
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    &Wrap {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.list {
+    margin: 0;
+    list-style: none;
+    height: calc(100% - 100px);
+    overflow-y: auto;
+
+    &Item {
+        color: green;
+        padding: 15px;
+    }
 }
