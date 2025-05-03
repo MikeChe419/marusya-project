@@ -1,0 +1,50 @@
+@use './variables' as *;
+
+@mixin font-face($family, $font-name, $weight) {
+  $base-url: $font-path + '/' + $font-name;
+
+  @font-face {
+    font-family: $family;
+    font-style: normal;
+    font-weight: $weight;
+    src: url($base-url + '.woff2') format('woff2'),
+    url($base-url + '.woff') format('woff')
+  }
+}
+
+@mixin font($f: $font-base, $fs: 0, $fw: 0, $lh: 0) {
+  font-family: $f;
+
+  @if $fs != 0 {
+    font-size: $fs;
+  }
+  @if $fw != 0 {
+    font-weight: $fw;
+  }
+  @if $lh != 0 {
+    line-height: $lh;
+  }
+}
+
+@mixin flex($ai: 0, $jc: 0, $gap: 0, $fd: 0, $fw: 0, $ac: 0) {
+  display: flex;
+
+  @if $ai != 0 {
+    align-items: $ai;
+  }
+  @if $ac != 0 {
+    align-content: $ac;
+  }
+  @if $jc != 0 {
+    justify-content: $jc;
+  }
+  @if $gap != 0 {
+    gap: $gap;
+  }
+  @if $fd != 0 {
+    flex-direction: $fd;
+  }
+  @if $fw != 0 {
+    flex-wrap: $fw;
+  }
+}

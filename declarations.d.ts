@@ -3,6 +3,7 @@ declare module '*.module.scss' {
     export default classses
 }
 
+declare module '*.scss';
 declare module '*.css';
 declare module '*.svg';
 declare module '*.jpg';
