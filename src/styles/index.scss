@@ -1,0 +1,10 @@
+@use './mixins';
+@use './fonts';
+@use './base';
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+  box-sizing: border-box;
+}

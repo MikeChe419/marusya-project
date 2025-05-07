@@ -12,8 +12,9 @@ const App:FC = () => {
   return (
     
   <Layout>
+    <Header/>
     <RouterProvider router={routes} />
-      <Header/>
+      
   </Layout>
   );
 }
