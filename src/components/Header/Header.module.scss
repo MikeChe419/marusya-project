@@ -22,6 +22,10 @@
         @include flex($ai: center, $gap: 10px);
     }
 
+    &Link {
+        display: block;
+    }
+
     &Wrap {
         display: flex;
         align-items: center;
