@@ -1,5 +1,6 @@
 export enum RouteEnum {
     root = '/',
+    home = '/home',
     genres ='/genres',
     genre = '/genre',
     film = '/film',
