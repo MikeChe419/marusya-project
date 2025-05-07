@@ -22,8 +22,8 @@ module.exports = {
     output: {
         filename: 'index.js', 
         path: path.resolve(__dirname, 'dist'), 
+        assetModuleFilename: path.join('images', '[name].[contenthash][ext]'),
     },
-
     module: {
         rules: [
             {
@@ -61,16 +61,16 @@ module.exports = {
                 }
             },
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                type: 'asset/resource',
-                use: {
-                    loader: "file-loader",
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: './images'
-                    }
-                }
-            }
+                         test: /\.(png|jpg|jpeg|gif)$/i,
+                         type: 'asset/resource',
+                       },
+                       {
+                         test: /\.svg$/,
+                         type: 'asset/resource',
+                         generator: {
+                           filename: path.join('icons', '[name].[contenthash][ext]'),
+                         },
+                        }
         ]
     },
 
