@@ -10,10 +10,8 @@ const App:FC = () => {
   const routes = createBrowserRouter(routesConfig)
 
   return (
-  <Layout>
-    <Header/>
     <RouterProvider router={routes} />
-  </Layout>
+
   );
 }
 
