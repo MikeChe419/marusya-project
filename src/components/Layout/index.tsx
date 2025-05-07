@@ -7,7 +7,7 @@ interface IlayoutProps {
     children?: React.ReactNode
 }
 
-const Layout:FC<IlayoutProps> = ({children}) => {
+const Layout:FC<IlayoutProps> = () => {
     return (
         <Fragment>
             <Header />
