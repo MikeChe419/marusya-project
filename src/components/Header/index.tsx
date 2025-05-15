@@ -23,8 +23,6 @@ const Header:FC = () => {
                     </li>
                 </ul>
             </header>
-          
-
     )
 }
 
