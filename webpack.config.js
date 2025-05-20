@@ -53,13 +53,6 @@ module.exports = {
             {
                 test: /\.(ttf|woff|woff2|eot)$/,
                 type: 'asset/resource',
-                // use: {
-                //     loader: "file-loader",
-                //     options: {
-                //         name: '[name].[ext]',
-                //         outputPath: 'fonts/'
-                //     }
-                // }
             },
             {
                          test: /\.(png|jpg|jpeg|gif)$/i,
