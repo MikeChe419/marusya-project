@@ -12,8 +12,17 @@ export const routesConfig: RouteObject[] = [
         element: <Layout />,
         children: [
             {
-                path:RouteEnum.home,
-                element: <HomePage />
+                element: <HomePage />,
+                children: [
+                    {
+                        path:RouteEnum.home,
+                        element: null
+                    },
+                    {
+                        path:RouteEnum.root,
+                        element: null
+                    }
+                ]
             },
             {
                 path:RouteEnum.genres,
