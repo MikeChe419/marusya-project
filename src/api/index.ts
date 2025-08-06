@@ -5,6 +5,8 @@ import axios from "axios";
 // })
 
 class Api {
+    private _baseURL: string;
+    private _headers: { [key: string]: string };
     constructor() {
         this._baseURL =  'https://cinemaguide.skillbox.cc/',
         this._headers = {
@@ -12,7 +14,7 @@ class Api {
         }
     }
 
-    signIn(login, password) {
+    signIn(login:string, password: string) {
         return axios.post(`${this._baseURL}auth/login`, {login, password})
        
     }
