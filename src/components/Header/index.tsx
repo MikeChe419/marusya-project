@@ -4,6 +4,7 @@ import { RouteEnum } from "../../config/constants";
 import { Link } from "react-router-dom";
 import  styles from  './Header.module.scss'
 import logoImg from '../../assets/images/logo.svg';
+import AuthForm from "../AuthorizationForm/AuthForm";
 
 
 const Header:FC = () => {
@@ -32,7 +33,7 @@ const Header:FC = () => {
              onClose={() => {
                 setIsOpen(false);
               }}>
-                <div>Модалка авторизации</div>
+                <AuthForm/>
             </Modal>}
             </>
     )

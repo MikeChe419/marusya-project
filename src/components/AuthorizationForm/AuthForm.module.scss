@@ -1,0 +1,65 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.auth {
+    &Wrapper {
+        padding: 64px 40px;
+        width: 420px;
+        @include flex($fd: column, $jc: center, $gap: 25px)
+    }
+
+    &Form {
+        @include flex($fd: column, $gap: 20px)
+    }
+
+    &Img {
+        height: 35px;
+        object-fit: contain;
+    }
+
+    &Title {
+        @include font ($fs: 24px, $fw: 600, $lh: calc(20/18));
+        
+        &Wrapper {
+            @include flex($jc: center, $ai: center, $gap: 10px)
+        }
+    }
+
+    &Button {
+        display: block;
+        color: $color-white;
+        background-color: $color-blue;
+        border-radius: $radius-28;
+        height: 56px;
+        @include font ($fs: 18px, $fw: 600, $lh: calc(20/18));
+    }
+}
+
+.inputField {
+    padding: 16px;
+    border: 1px solid $color-gray-300;
+    border-radius: $radius-8;
+    @include font ($fs: 18px, $fw: 400, $lh: calc(20/18));
+
+    &:focus {
+        border-color: var(--color-secondary);
+    }
+
+    &::placeholder {
+        color: $color-gray-400;
+        @include font ($fs: 18px, $fw: 400, $lh: calc(20/18));
+    }
+
+    &[type="text"] {
+        height: 56px;
+    }
+
+    &[type="password"] {
+        height: 56px;
+    }
+
+
+}
+
+
+

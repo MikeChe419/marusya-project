@@ -48,3 +48,21 @@ ul {
     background: #BDBDBD;
   }
 }
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: var(--font-size-m);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
