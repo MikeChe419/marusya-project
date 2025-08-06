@@ -7,11 +7,12 @@
         width: 100%;
         height: 100px;
         padding: 32px 80px;
-        @include flex($ai: center, $gap: 80px);
+        @include flex($ai: center, $gap: 80px, $jc: space-between);
     }
 
     &Nav {
         &List {
+            width: 100%;
             @include flex($ai: center, $gap: 20px);
             @include font($fs: 24px, $fw: 400, $lh: calc(18 / 18));
         }  
@@ -19,6 +20,17 @@
         &Link {
             color: white;
             text-decoration: none;
+        }
+    }
+
+    &Button {
+        &Auth {
+            cursor: pointer;
+            color: white;
+            display: block;
+            border: none;
+            background: none;
+            @include font($fs: 24px, $fw: 400, $lh: calc(18 / 18));
         }
     }
     
