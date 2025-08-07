@@ -1,9 +1,10 @@
 import React, { FC } from "react";
 
-import logoImg from '../../assets/images/smallLogo.svg'
+import logoImg from '../../assets/images/smallLogo.svg';
+import { IAuthForm } from "./RegistartionForm";
 import styles from  './AuthForm.module.scss'
 
-const AuthForm:FC = () => {
+const AuthForm:FC<IAuthForm> = ({setIsExistUser}) => {
     return (
         <div className={styles.authWrapper}>
             <div className={styles.authTitleWrapper}>
@@ -33,6 +34,13 @@ const AuthForm:FC = () => {
                  Войти
             </button>
         </form>
+          <button
+                type="button"
+                className={styles.authExistUserButton}
+                onClick={setIsExistUser}
+          >
+                Регистрация
+            </button>
         </div>
     )
 
