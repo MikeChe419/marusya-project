@@ -15,8 +15,11 @@ class Api {
     }
 
     signIn(login:string, password: string) {
-        return axios.post(`${this._baseURL}auth/login`, {login, password})
-       
+        return axios.post(`${this._baseURL}auth/login`, {login, password})  
+    }
+
+    signUp(login:string, password: string, name: string, surname: string) {
+        return axios.post(`${this._baseURL}user`, {login, password, name, surname})
     }
 }
 
