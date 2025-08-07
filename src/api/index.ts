@@ -21,6 +21,10 @@ class Api {
     signUp(email:string, password: string, name: string, surname: string) {
         return axios.post(`${this._baseURL}user`, {email, password, name, surname})
     }
+
+    movie() {
+        return axios.get(`${this._baseURL}movie`)
+    }
 }
 
 const api = new Api()

@@ -1,19 +1,28 @@
-import React, {FC} from "react";
+import React, {FC, useEffect, useState} from "react";
 import styles from './Main.module.scss';
-import axios from "axios";
+import api from "../../api";
 
 const Main:FC = () => {
 
-    axios({
-        method: 'get',
-        url: 'https://cinemaguide.skillbox.cc/movie',
-    }).then(res => console.log(res))
+    const [movies, setMovies] = useState<any[]>([])
+
+    useEffect(() => {
+        api.movie().then(res => res.data && setMovies(res.data))
+        .catch(error => console.log(error))
+    }, [])
 
     return (
-        <h1 className={styles.mainTitle}>Шерлок Холмс и доктор Ватсон</h1>
-
+        <>
+        <ul>
+        {
+            !!movies.length && movies.map((el, i) => (
+                <li key={i}>{el.title}</li>
+            ))
+        }
+        </ul>
+        </>
     )
-    
+
 }
 
 export default Main
