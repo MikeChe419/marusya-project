@@ -76,7 +76,7 @@ const RegistrationForm:FC<IAuthForm> = ({setIsExistUser}) => {
                 className={styles.inputField}
             />
               <button type="submit" className={styles.authButton}>
-                 Войти
+                Зарегестрироваться
             </button>
         </form>
 
