@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react"
+import React, { FC, ReactNode, useState } from "react"
 import Modal from "../Modal";
 import { RouteEnum } from "../../config/constants";
 import { Link } from "react-router-dom";
@@ -9,11 +9,19 @@ import RegistrationForm from "../AuthorizationForm/RegistartionForm";
 
 import styles from './Header.module.scss'
 
+type loginType = 'signIn'| 'signUp' | 'success' 
+
 
 const Header: FC = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [isExistUser, setIsExistUser] = useState<boolean>(true)
+    const [stateLogin, setStateLogin] = useState<loginType>('signIn')
+
+    const modalContent: Record<loginType, ReactNode> = {
+        'signIn': <AuthForm setIsExistUser={() => { setStateLogin('signUp') }} />,
+        'signUp': <RegistrationForm setIsExistUser={() => {  setStateLogin('signIn') }} />,
+        'success': <div>Успех</div>
+    }
 
     return (
         <>
@@ -37,11 +45,10 @@ const Header: FC = () => {
                 onClose={() => {
                     setIsOpen(false);
                 }}>
+                     {
+                        modalContent[stateLogin]
+                     }
 
-                {isExistUser
-                    ? <AuthForm setIsExistUser={() => { setIsExistUser(false) }} />
-                    : <RegistrationForm setIsExistUser={() => { setIsExistUser(true) }} />
-                }
             </Modal>}
         </>
     )
