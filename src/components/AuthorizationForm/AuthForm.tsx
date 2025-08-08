@@ -4,7 +4,7 @@ import logoImg from '../../assets/images/smallLogo.svg';
 import { IAuthForm } from "./RegistartionForm";
 import styles from  './AuthForm.module.scss'
 
-const AuthForm:FC<IAuthForm> = ({setIsExistUser}) => {
+const AuthForm:FC<IAuthForm> = ({setStateLogin}) => {
     return (
         <div className={styles.authWrapper}>
             <div className={styles.authTitleWrapper}>
@@ -37,7 +37,7 @@ const AuthForm:FC<IAuthForm> = ({setIsExistUser}) => {
           <button
                 type="button"
                 className={styles.authExistUserButton}
-                onClick={setIsExistUser}
+                onClick={() => { setStateLogin('signUp') }} 
           >
                 Регистрация
             </button>

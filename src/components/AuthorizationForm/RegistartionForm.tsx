@@ -1,13 +1,14 @@
-import React, { FC, useState, ChangeEvent, FormEvent} from "react";
+import React, { FC, useState, ChangeEvent, FormEvent, Dispatch} from "react";
 import logoImg from '../../assets/images/smallLogo.svg'
 import styles from  './AuthForm.module.scss'
 import api from "../../api";
+import { loginType } from "../Header";
 
 export interface IAuthForm {
-    setIsExistUser: () => void;
+    setStateLogin: Dispatch<React.SetStateAction<loginType>>
 }
 
-const RegistrationForm:FC<IAuthForm> = ({setIsExistUser}) => {
+const RegistrationForm:FC<IAuthForm> = ({setStateLogin}) => {
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [userName, setUserName] = useState<string>('');
@@ -18,7 +19,7 @@ const RegistrationForm:FC<IAuthForm> = ({setIsExistUser}) => {
         if (login && password && sureName && userName) {
             api.signUp(login, password, userName, sureName)
             .then(res => {
-                console.log(res.data)
+                setStateLogin('success')
             }).catch((error) =>console.log(error))
         } 
         else {
@@ -83,7 +84,7 @@ const RegistrationForm:FC<IAuthForm> = ({setIsExistUser}) => {
          <button 
             type="button" 
             className={styles.authExistUserButton}
-            onClick={setIsExistUser}
+            onClick={() => {setStateLogin('signIn')}}
             >
                 У меня есть пароль
             </button>

@@ -9,7 +9,7 @@ import RegistrationForm from "../AuthorizationForm/RegistartionForm";
 
 import styles from './Header.module.scss'
 
-type loginType = 'signIn'| 'signUp' | 'success' 
+ export type loginType = 'signIn'| 'signUp' | 'success' 
 
 
 const Header: FC = () => {
@@ -18,8 +18,8 @@ const Header: FC = () => {
     const [stateLogin, setStateLogin] = useState<loginType>('signIn')
 
     const modalContent: Record<loginType, ReactNode> = {
-        'signIn': <AuthForm setIsExistUser={() => { setStateLogin('signUp') }} />,
-        'signUp': <RegistrationForm setIsExistUser={() => {  setStateLogin('signIn') }} />,
+        'signIn': <AuthForm setStateLogin={setStateLogin}/>,
+        'signUp': <RegistrationForm setStateLogin={setStateLogin}/>,
         'success': <div>Успех</div>
     }
 
