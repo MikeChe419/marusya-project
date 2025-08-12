@@ -7,7 +7,7 @@ const Main:FC = () => {
     const [movies, setMovies] = useState<any[]>([])
 
     useEffect(() => {
-        api.movie().then(res => res.data && setMovies(res.data))
+        api.getMovies().then(res => res.data && setMovies(res.data))
         .catch(error => console.log(error))
     }, [])
 

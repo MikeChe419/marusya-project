@@ -57,8 +57,16 @@
     &[type="password"] {
         height: 56px;
     }
+}
 
+.success {
+    &Title {
+        @include font ($fs: 24px, $fw: 600, $lh: calc(32/24)); 
+    } 
 
+    &Text {
+        @include font ($fs: 18px, $fw: 400, $lh: calc(24/18)); 
+    }
 }
 
 

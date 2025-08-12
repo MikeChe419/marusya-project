@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import logoImg from '../../assets/images/logo.svg';
 import AuthForm from "../AuthorizationForm/AuthForm";
 import RegistrationForm from "../AuthorizationForm/RegistartionForm";
-
+import SuccessRegistration from "../AuthorizationForm/SuccessRegistration";
 import styles from './Header.module.scss'
 
  export type loginType = 'signIn'| 'signUp' | 'success' 
@@ -18,9 +18,9 @@ const Header: FC = () => {
     const [stateLogin, setStateLogin] = useState<loginType>('signIn')
 
     const modalContent: Record<loginType, ReactNode> = {
-        'signIn': <AuthForm setStateLogin={setStateLogin}/>,
+        'signIn': <AuthForm setStateLogin={setStateLogin} setIsOpen={setIsOpen}/>,
         'signUp': <RegistrationForm setStateLogin={setStateLogin}/>,
-        'success': <div>Успех</div>
+        'success': <SuccessRegistration setStateLogin={setStateLogin}/>
     }
 
     return (

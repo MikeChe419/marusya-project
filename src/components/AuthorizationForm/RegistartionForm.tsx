@@ -4,11 +4,11 @@ import styles from  './AuthForm.module.scss'
 import api from "../../api";
 import { loginType } from "../Header";
 
-export interface IAuthForm {
+export interface IRegForm {
     setStateLogin: Dispatch<React.SetStateAction<loginType>>
 }
 
-const RegistrationForm:FC<IAuthForm> = ({setStateLogin}) => {
+const RegistrationForm:FC<IRegForm> = ({setStateLogin}) => {
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [userName, setUserName] = useState<string>('');
@@ -96,8 +96,9 @@ const RegistrationForm:FC<IAuthForm> = ({setStateLogin}) => {
 export default RegistrationForm
 
 // {
-//     "email": "example@mail.com",
-//     "password": "123456",
+//     "email": "example@mail.com", ivanov@user.com
+//     "password": "123456", 7654321
 //     "name": "Иван",
 //     "surname": "Петров"
 // }
+

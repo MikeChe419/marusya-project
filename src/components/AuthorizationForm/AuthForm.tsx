@@ -1,10 +1,33 @@
-import React, { FC } from "react";
+import React, { FC, useState, FormEvent, ChangeEvent, Dispatch } from "react";
 
 import logoImg from '../../assets/images/smallLogo.svg';
-import { IAuthForm } from "./RegistartionForm";
+import { IRegForm } from "./RegistartionForm";
+import api from "../../api";
 import styles from  './AuthForm.module.scss'
 
-const AuthForm:FC<IAuthForm> = ({setStateLogin}) => {
+
+interface IAuthForm extends IRegForm {
+    setIsOpen:  Dispatch<React.SetStateAction<boolean>>
+}
+
+const AuthForm:FC<IAuthForm> = ({setStateLogin, setIsOpen}) => {
+    const [login, setLogin] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        if (login && password) {
+            api.signIn(login, password)
+            .then(res => {
+                setIsOpen(false)
+            }).catch((error) =>console.log(error))
+        } 
+        else {
+            console.log('заполните данные')
+        }
+    }
+
+
     return (
         <div className={styles.authWrapper}>
             <div className={styles.authTitleWrapper}>
@@ -12,23 +35,24 @@ const AuthForm:FC<IAuthForm> = ({setStateLogin}) => {
             <h3 className={styles.authTitle}>Маруся</h3>
             </div>
            
-        <form className={styles.authForm}>
+        <form className={styles.authForm}  onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Логин"
-                // value={title}
-                // onChange={(event) => {
-                //     setTitle(event.target.value);
-                //     if (error) {
-                //         setError('');
-                //     }
-                // }}
+                value={login}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                    setLogin(e.target.value)
+                }}
                 className={styles.inputField}
             />
         <input 
             type='password'
             placeholder="Пароль"
             className={styles.inputField}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                setPassword(e.target.value)
+            }}
+            value={password}
             />
               <button type="submit" className={styles.authButton}>
                  Войти
