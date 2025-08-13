@@ -15,44 +15,44 @@ class Api {
     }
 
     signIn(email:string, password: string) {
-        return axios.post(`${this._baseURL}auth/login`, {email, password})  
+        return axios.post(`${this._baseURL}auth/login`, {email, password}, {withCredentials: true})  
     }
 
     signUp(email:string, password: string, name: string, surname: string) {
-        return axios.post(`${this._baseURL}user`, {email, password, name, surname})
+        return axios.post(`${this._baseURL}user`, {email, password, name, surname}, {withCredentials: true})
     }
 
     profile() {
-        return axios.get(`${this._baseURL}profile`)
+        return axios.get(`${this._baseURL}profile`, {withCredentials: true})
     }
     favorites() {
-        return axios.get(`${this._baseURL}favorites`)
+        return axios.get(`${this._baseURL}favorites`, {withCredentials: true})
     }
     setFavorite(id: number) {
-        return axios.post(`${this._baseURL}favorites`, {id})  
+        return axios.post(`${this._baseURL}favorites`, {id}, {withCredentials: true})  
     }
 
     delFavorite(id: number) {
-        return axios.delete(`${this._baseURL}favorites/${id}`)  
+        return axios.delete(`${this._baseURL}favorites/${id}`, {withCredentials: true})  
     }
 
     getMovies() {
-        return axios.get(`${this._baseURL}movie`)
+        return axios.get(`${this._baseURL}movie`, {withCredentials: true})
     }
 
     moviesTop () {
-        return axios.get(`${this._baseURL}movie/top10`)  
+        return axios.get(`${this._baseURL}movie/top10`, {withCredentials: true})  
     }
 
     getMovie(id: number) {
-        return axios.get(`${this._baseURL}movie/${id}`)  
+        return axios.get(`${this._baseURL}movie/${id}`, {withCredentials: true})  
     }
     getGenres() {
-        return axios.get(`${this._baseURL}movie/genres`)
+        return axios.get(`${this._baseURL}movie/genres`, {withCredentials: true})
     }
 
     getRandomMovie() {
-        return axios.get(`${this._baseURL}movie/random`)
+        return axios.get(`${this._baseURL}movie/random`, {withCredentials: true})
     }
 
 }
