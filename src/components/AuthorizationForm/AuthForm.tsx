@@ -18,9 +18,9 @@ const AuthForm:FC<IAuthForm> = ({setStateLogin, setIsOpen}) => {
         e.preventDefault();
         if (login && password) {
             api.signIn(login, password)
-            .then(res => {
-                setIsOpen(false)
-            }).catch((error) =>console.log(error))
+            .then(() =>  api.profile().then(() =>  setIsOpen(false) )
+              
+            ).catch((error) =>console.log(error))
         } 
         else {
             console.log('заполните данные')

@@ -22,6 +22,10 @@ class Api {
         return axios.post(`${this._baseURL}user`, {email, password, name, surname}, {withCredentials: true})
     }
 
+    logout() {
+        return axios.get(`${this._baseURL}auth/logout`, {withCredentials: true})
+    }
+
     profile() {
         return axios.get(`${this._baseURL}profile`, {withCredentials: true})
     }

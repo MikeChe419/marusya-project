@@ -22,6 +22,8 @@ const Header: FC = () => {
         'signUp': <RegistrationForm setStateLogin={setStateLogin}/>,
         'success': <SuccessRegistration setStateLogin={setStateLogin}/>
     }
+    
+    console.log(document.cookie)
 
     return (
         <>
