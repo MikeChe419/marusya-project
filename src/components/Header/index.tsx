@@ -2,18 +2,22 @@ import React, { FC, ReactNode, useState } from "react"
 import Modal from "../Modal";
 import { RouteEnum } from "../../config/constants";
 import { Link } from "react-router-dom";
-
+import { useAppSelector } from "../../store/store";
 import logoImg from '../../assets/images/logo.svg';
 import AuthForm from "../AuthorizationForm/AuthForm";
 import RegistrationForm from "../AuthorizationForm/RegistartionForm";
 import SuccessRegistration from "../AuthorizationForm/SuccessRegistration";
+import { ProfileStateType } from "../../store/types";
 import styles from './Header.module.scss'
 
  export type loginType = 'signIn'| 'signUp' | 'success' 
 
 
 const Header: FC = () => {
+    const profile = useAppSelector((state) => state.profileState.profile)
 
+    const {email} = profile ?? {}
+    
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [stateLogin, setStateLogin] = useState<loginType>('signIn')
 
@@ -22,8 +26,8 @@ const Header: FC = () => {
         'signUp': <RegistrationForm setStateLogin={setStateLogin}/>,
         'success': <SuccessRegistration setStateLogin={setStateLogin}/>
     }
-    
-    console.log(document.cookie)
+
+    console.log(profile)
 
     return (
         <>
@@ -41,7 +45,8 @@ const Header: FC = () => {
                         <Link className={styles.headerNavLink} to={RouteEnum.genres}>Жанры</Link>
                     </li>
                 </ul>
-                <button className={styles.headerButtonAuth} onClick={() => setIsOpen(true)}>Войти</button>
+                {profile ? <div className={styles.headerButtonAuth}>{email}</div> :
+                <button className={styles.headerButtonAuth} onClick={() => setIsOpen(true)}>Войти</button>}
             </header>
             {<Modal isOpen={isOpen}
                 onClose={() => {

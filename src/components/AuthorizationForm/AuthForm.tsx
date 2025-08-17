@@ -1,9 +1,12 @@
 import React, { FC, useState, FormEvent, ChangeEvent, Dispatch } from "react";
-
+import { AxiosResponse } from "axios";
 import logoImg from '../../assets/images/smallLogo.svg';
 import { IRegForm } from "./RegistartionForm";
 import api from "../../api";
 import styles from  './AuthForm.module.scss'
+import { useAppDispatch } from "../../store/store";
+import { setProfile } from "../../store/profileSlice";
+import { ProfileStateType } from "../../store/types";
 
 
 interface IAuthForm extends IRegForm {
@@ -11,6 +14,8 @@ interface IAuthForm extends IRegForm {
 }
 
 const AuthForm:FC<IAuthForm> = ({setStateLogin, setIsOpen}) => {
+    const dispatch = useAppDispatch()
+
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
@@ -18,8 +23,11 @@ const AuthForm:FC<IAuthForm> = ({setStateLogin, setIsOpen}) => {
         e.preventDefault();
         if (login && password) {
             api.signIn(login, password)
-            .then(() =>  api.profile().then(() =>  setIsOpen(false) )
-              
+            .then(() =>  api.profile().then((res:AxiosResponse<ProfileStateType>) => {
+                console.log(res.data)
+                dispatch(setProfile(res.data))
+                setIsOpen(false)
+            })
             ).catch((error) =>console.log(error))
         } 
         else {

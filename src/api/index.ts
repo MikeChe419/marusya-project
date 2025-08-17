@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
+import { ProfileStateType } from "../store/types";
 
 // export default axios.create({
 //     baseURL: 'https://cinemaguide.skillbox.cc/'
