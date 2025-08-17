@@ -14,9 +14,8 @@ import styles from './Header.module.scss'
 
 
 const Header: FC = () => {
-    const profile = useAppSelector((state) => state.profileState.profile)
-
-    const {email} = profile ?? {}
+    const profile = JSON.parse(sessionStorage.getItem('profile') ?? '')  
+    const {email} = profile as ProfileStateType
     
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [stateLogin, setStateLogin] = useState<loginType>('signIn')
@@ -26,8 +25,6 @@ const Header: FC = () => {
         'signUp': <RegistrationForm setStateLogin={setStateLogin}/>,
         'success': <SuccessRegistration setStateLogin={setStateLogin}/>
     }
-
-    console.log(profile)
 
     return (
         <>

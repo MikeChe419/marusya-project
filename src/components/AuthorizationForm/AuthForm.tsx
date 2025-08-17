@@ -19,12 +19,14 @@ const AuthForm:FC<IAuthForm> = ({setStateLogin, setIsOpen}) => {
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
+
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         if (login && password) {
             api.signIn(login, password)
-            .then(() =>  api.profile().then((res:AxiosResponse<ProfileStateType>) => {
-                console.log(res.data)
+            .then(() =>  api.profile().then((res) => {
+                console.log(res)
+               res.data && sessionStorage.setItem('profile', JSON.stringify(res.data))
                 dispatch(setProfile(res.data))
                 setIsOpen(false)
             })

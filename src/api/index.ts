@@ -15,8 +15,8 @@ class Api {
         // }
     }
 
-    signIn(email:string, password: string) {
-        return axios.post(`${this._baseURL}auth/login`, {email, password}, {withCredentials: true})  
+    signIn(email:string, password: string)   {
+        return axios.post(`${this._baseURL}auth/login`, {email, password}, {withCredentials: true}) 
     }
 
     signUp(email:string, password: string, name: string, surname: string) {
@@ -28,7 +28,7 @@ class Api {
     }
 
     profile() {
-        return axios.get(`${this._baseURL}profile`, {withCredentials: true})
+        return axios.get<ProfileStateType>(`${this._baseURL}profile`, {withCredentials: true})
     }
     favorites() {
         return axios.get(`${this._baseURL}favorites`, {withCredentials: true})
