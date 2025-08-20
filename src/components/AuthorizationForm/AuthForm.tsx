@@ -1,12 +1,10 @@
 import React, { FC, useState, FormEvent, ChangeEvent, Dispatch } from "react";
-import { AxiosResponse } from "axios";
 import logoImg from '../../assets/images/smallLogo.svg';
 import { IRegForm } from "./RegistartionForm";
 import api from "../../api";
 import styles from  './AuthForm.module.scss'
 import { useAppDispatch } from "../../store/store";
 import { setProfile } from "../../store/profileSlice";
-import { ProfileStateType } from "../../store/types";
 
 
 interface IAuthForm extends IRegForm {

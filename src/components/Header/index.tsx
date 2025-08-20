@@ -1,8 +1,8 @@
-import React, { FC, ReactNode, useState } from "react"
+import React, { FC, ReactNode, useState,useEffect} from "react"
 import Modal from "../Modal";
 import { RouteEnum } from "../../config/constants";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../store/store";
+
 import logoImg from '../../assets/images/logo.svg';
 import AuthForm from "../AuthorizationForm/AuthForm";
 import RegistrationForm from "../AuthorizationForm/RegistartionForm";
@@ -14,11 +14,16 @@ import styles from './Header.module.scss'
 
 
 const Header: FC = () => {
-    const profile = JSON.parse(sessionStorage.getItem('profile') ?? '')  
-    const {email} = profile as ProfileStateType
-    
+    const[mail, setMail] =useState<string>('')
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [stateLogin, setStateLogin] = useState<loginType>('signIn')
+    const profileString = sessionStorage.getItem('profile')
+    useEffect(() => {
+        if(!profileString) return
+          const {email} = JSON.parse(profileString) as ProfileStateType
+          !!email && setMail(email)
+    }, [profileString])
+   
 
     const modalContent: Record<loginType, ReactNode> = {
         'signIn': <AuthForm setStateLogin={setStateLogin} setIsOpen={setIsOpen}/>,
@@ -42,7 +47,7 @@ const Header: FC = () => {
                         <Link className={styles.headerNavLink} to={RouteEnum.genres}>Жанры</Link>
                     </li>
                 </ul>
-                {profile ? <div className={styles.headerButtonAuth}>{email}</div> :
+                {mail ?  <Link className={styles.headerNavLink} to={RouteEnum.office}>{mail}</Link> :
                 <button className={styles.headerButtonAuth} onClick={() => setIsOpen(true)}>Войти</button>}
             </header>
             {<Modal isOpen={isOpen}
