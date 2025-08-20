@@ -12,15 +12,16 @@ const Main:FC = () => {
     }, [])
 
     return (
-        <>
-        <ul>
+        <main className={styles.main}>
+            <h2>Главная страница</h2>
+        {/* <ul>
         {
             !!movies.length && movies.map((el, i) => (
                 <li key={i}>{el.title}</li>
             ))
         }
-        </ul>
-        </>
+        </ul> */}
+        </main>
     )
 
 }

@@ -4,8 +4,8 @@
 .header {
     &Container {
 
-        background:  rgba(39, 36, 36);
-        backdrop-filter: blur(20px);
+        margin: 0 auto;
+        max-width: 1440px;
         width: 100%;
         height: 100px;
         padding: 32px 80px;
