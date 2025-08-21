@@ -1,5 +1,5 @@
-import axios, {AxiosResponse} from "axios";
-import { ProfileStateType } from "../store/types";
+import axios from "axios";
+import { ProfileStateType, MoviesListType } from "../store/types";
 
 // export default axios.create({
 //     baseURL: 'https://cinemaguide.skillbox.cc/'
@@ -42,22 +42,22 @@ class Api {
     }
 
     getMovies() {
-        return axios.get(`${this._baseURL}movie`, {withCredentials: true})
+        return axios.get<MoviesListType[]>(`${this._baseURL}movie`, {withCredentials: true})
     }
 
     moviesTop () {
-        return axios.get(`${this._baseURL}movie/top10`, {withCredentials: true})  
+        return axios.get<MoviesListType[]>(`${this._baseURL}movie/top10`, {withCredentials: true})  
     }
 
     getMovie(id: number) {
-        return axios.get(`${this._baseURL}movie/${id}`, {withCredentials: true})  
+        return axios.get<MoviesListType[]>(`${this._baseURL}movie/${id}`, {withCredentials: true})  
     }
     getGenres() {
         return axios.get(`${this._baseURL}movie/genres`, {withCredentials: true})
     }
 
     getRandomMovie() {
-        return axios.get(`${this._baseURL}movie/random`, {withCredentials: true})
+        return axios.get<MoviesListType[]>(`${this._baseURL}movie/random`, {withCredentials: true})
     }
 
 }

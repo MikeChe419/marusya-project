@@ -1,13 +1,16 @@
 import React, {FC, useEffect, useState} from "react";
 import styles from './Main.module.scss';
+import { MoviesListType } from "../../store/types";
 import api from "../../api";
 
 const Main:FC = () => {
 
-    const [movies, setMovies] = useState<any[]>([])
+    const [movies, setMovies] = useState<MoviesListType[]>([])
 
     useEffect(() => {
-        api.getMovies().then(res => res.data && setMovies(res.data))
+        api.getRandomMovie().then(res => console.log(res.data) )
+
+        api.moviesTop().then(res => res.data && setMovies(res.data))
         .catch(error => console.log(error))
     }, [])
 
