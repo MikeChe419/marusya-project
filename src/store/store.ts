@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 
-import { profileReducer } from "./profileSlice";
+import { moviesReducer, moviesSlice } from "./moviesSlice";
 export const store = configureStore({
     reducer: {
-        profileState: profileReducer,
+        moviesState: moviesReducer,
     },
 
     middleware: getDefaultMiddleware =>

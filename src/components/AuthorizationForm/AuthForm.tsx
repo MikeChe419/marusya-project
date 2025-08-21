@@ -4,7 +4,7 @@ import { IRegForm } from "./RegistartionForm";
 import api from "../../api";
 import styles from  './AuthForm.module.scss'
 import { useAppDispatch } from "../../store/store";
-import { setProfile } from "../../store/profileSlice";
+import { setProfile } from "../../store/moviesSlice";
 
 
 interface IAuthForm extends IRegForm {
