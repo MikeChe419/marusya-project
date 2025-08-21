@@ -13,7 +13,7 @@ export type RandomMovieType = {
 
 }
 
-export type TopMoviesListType = {
+export type MoviesListType = {
     keywords: string[],
     backdropUrl: string,
     production: string,
@@ -34,7 +34,7 @@ export type TopMoviesListType = {
     awardsSummary: string,
     runtime: number,
     trailerUrl: string,
-    relaseYear: number,
+    releaseYear: number,
     countriesOfOrigin: string[],
     originalTitle: string,
     searchL: string,

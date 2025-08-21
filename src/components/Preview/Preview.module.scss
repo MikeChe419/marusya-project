@@ -1,0 +1,12 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.preview {
+    width: 100%;
+    @include flex($jc: space-between, $gap: 20px);
+    max-height: 550px;
+
+    &Data {
+        @include flex( $gap: 10px);  
+    }
+}

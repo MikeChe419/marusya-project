@@ -1,29 +1,26 @@
-import React, {FC, useEffect, useState} from "react";
-import styles from './Main.module.scss';
-import { MoviesListType } from "../../store/types";
+import React, {FC, useEffect} from "react";
+import { useAppDispatch } from "../../store/store";
+import Preview from "../Preview/Preview";
+import { setRandomMovie, setTopMoviesList } from "../../store/moviesSlice";
 import api from "../../api";
 
+import styles from './Main.module.scss';
+
 const Main:FC = () => {
-
-    const [movies, setMovies] = useState<MoviesListType[]>([])
-
+    const dispatch = useAppDispatch();
     useEffect(() => {
-        api.getRandomMovie().then(res => console.log(res.data) )
+        api.getRandomMovie().then(res => res.data &&
+             dispatch(setRandomMovie(res.data)))
+             .catch(error => console.log(error))
 
-        api.moviesTop().then(res => res.data && setMovies(res.data))
+        api.moviesTop().then(res => res.data &&
+             dispatch(setTopMoviesList(res.data)))
         .catch(error => console.log(error))
     }, [])
 
     return (
         <main className={styles.main}>
-            <h2>Главная страница</h2>
-        {/* <ul>
-        {
-            !!movies.length && movies.map((el, i) => (
-                <li key={i}>{el.title}</li>
-            ))
-        }
-        </ul> */}
+            <Preview/>
         </main>
     )
 

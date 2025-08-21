@@ -4,7 +4,6 @@ import { IRegForm } from "./RegistartionForm";
 import api from "../../api";
 import styles from  './AuthForm.module.scss'
 import { useAppDispatch } from "../../store/store";
-import { setProfile } from "../../store/moviesSlice";
 
 
 interface IAuthForm extends IRegForm {
@@ -25,7 +24,6 @@ const AuthForm:FC<IAuthForm> = ({setStateLogin, setIsOpen}) => {
             .then(() =>  api.profile().then((res) => {
                 console.log(res)
                res.data && sessionStorage.setItem('profile', JSON.stringify(res.data))
-                dispatch(setProfile(res.data))
                 setIsOpen(false)
             })
             ).catch((error) =>console.log(error))

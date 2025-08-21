@@ -50,14 +50,14 @@ class Api {
     }
 
     getMovie(id: number) {
-        return axios.get<MoviesListType[]>(`${this._baseURL}movie/${id}`, {withCredentials: true})  
+        return axios.get<MoviesListType>(`${this._baseURL}movie/${id}`, {withCredentials: true})  
     }
     getGenres() {
         return axios.get(`${this._baseURL}movie/genres`, {withCredentials: true})
     }
 
     getRandomMovie() {
-        return axios.get<MoviesListType[]>(`${this._baseURL}movie/random`, {withCredentials: true})
+        return axios.get<MoviesListType>(`${this._baseURL}movie/random`, {withCredentials: true})
     }
 
 }
